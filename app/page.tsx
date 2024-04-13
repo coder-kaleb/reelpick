@@ -1,6 +1,5 @@
-"use client";
-import Nav from "@/components/Nav";
+import HomeMovi from "@/components/HomeMovi";
 
 export default function Home() {
-  return <Nav />;
+  return <HomeMovi />;
 }

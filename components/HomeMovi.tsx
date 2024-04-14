@@ -15,10 +15,10 @@ const HomeMovi = () => {
     setNavState,
   };
   return (
-    <main className="relative mx-auto flex flex-col max-w-screen-2xl h-screen">
+    <main className="h-[250vh] w-full">
       <NavContext.Provider value={contextVale}>
         <Nav />
-        <div className="flex w-full items-start h-full">
+        <div className="flex h-full w-full items-start">
           <Sidebar />
           <MovieWrapper />
         </div>
@@ -28,6 +28,3 @@ const HomeMovi = () => {
 };
 
 export default HomeMovi;
-
-
-

@@ -8,8 +8,8 @@ const MobNav = () => {
   const { isOpen, extendWidth, setNavState } = useNavContext();
   return (
     <header
-      className="relative flex items-center 
-    gap-2 overflow-hidden px-4 pt-3 md:hidden"
+      className="sticky top-0 z-50 flex items-center 
+    gap-2 overflow-hidden px-4  pt-3 md:hidden "
     >
       <Link
         href="/"

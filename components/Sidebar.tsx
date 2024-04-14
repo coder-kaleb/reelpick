@@ -83,7 +83,7 @@ const Sidebar = () => {
   ];
   return (
     <aside
-      className={`fixed top-6 h-[80dvh] bg-background-1 px-4 transition-all duration-500 overflow-y-auto md:translate-x-0 ${!isOpen ? "-translate-x-full" : "translate-x-0"}`}
+      className={`fixed z-10 top-16 h-[90dvh] bg-background-1 px-4 transition-all duration-500 overflow-y-auto md:translate-x-0 ${!isOpen ? "-translate-x-full" : "translate-x-0"}`}
     >
       <h4 className="mb-1 text-lg font-medium text-white">Genres</h4>
       <ul className="w-full h-full">

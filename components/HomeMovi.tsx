@@ -18,7 +18,7 @@ const HomeMovi = () => {
     <main className="h-[250vh] w-full">
       <NavContext.Provider value={contextVale}>
         <Nav />
-        <div className="flex h-full w-full items-start">
+        <div className="flex h-full w-full items-start relative">
           <Sidebar />
           <MovieWrapper />
         </div>

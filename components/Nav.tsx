@@ -21,7 +21,7 @@ const Nav = () => {
   return (
     <>
       <header
-        className="sticky top-0 z-50 hidden w-full justify-between  border border-red-600 px-4 pt-3 md:flex
+        className="sticky top-0 z-50 hidden w-full justify-between px-4 pt-3 md:flex
      "
       >
         <Link href="/" className={`text-xl font-semibold text-white`}>

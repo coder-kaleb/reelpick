@@ -31,19 +31,27 @@ const PopMovie = ({
     });
   };
 
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+
   return (
     <div
-      className={`flex  h-full flex-col gap-5 rounded-lg bg-[url('/puss.jpg')] bg-cover bg-center bg-no-repeat p-10 pl-20`}
+      className={`embla__slide flex-1 justify-center flex-col gap-5 overflow-hidden flex rounded-lg p-10 pl-20`}
+      style={{
+        backgroundImage: `url(${imageUrl})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
-      <h1 className="max-w-md text-5xl font-medium leading-none">{title}</h1>
-      <div className="flex gap-2">
-        <span className="text-gray-300">{release_date}</span>
+      <h1 className="max-w-md text-6xl text-white font-bold leading-none">{title}</h1>
+      <div className="flex gap-2 text-white">
+        <span>{release_date}</span>
         <span className="rounded bg-banner-background px-1">
           {vote_average}
         </span>
       </div>
-      <p className="text-gray-300">{genre()}</p>
-      <p className="word-space line-clamp-2 max-w-2xl tracking-wide text-gray-300">
+      <p className="text-white">{genre().join(", ")}</p>
+      <p className="word-space line-clamp-2 max-w-xl tracking-wide text-gray-300">
         {overview}
       </p>
     </div>

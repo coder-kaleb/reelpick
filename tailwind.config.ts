@@ -22,6 +22,9 @@ const config: Config = {
         "surface-l": "hsla(250, 13%, 11%, 1)",
         "rating-color": "hsla(44, 100%, 49%, 1)",
       },
+      boxShadow: {
+        'around': '0 0 0 2px hsla(250, 1%, 44%, 1)'
+      }
     },
   },
   plugins: [],

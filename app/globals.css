@@ -13,9 +13,7 @@
   width: 3px;
   height: 8px;
 }
-:focus-visible {
-  outline-color: hsla(349, 69%, 51%, 1);
-}
+
 
 ::-webkit-scrollbar-thumb {
   background-color: hsla(250, 6%, 20%, 1);
@@ -36,4 +34,13 @@
 .embla__slide {
   flex: 0 0 100%;
   min-width: 0;
+}
+
+.sidebar__scroll::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  transition: background-color 1s ease-in-out;
+}
+
+.sidebar__scroll:is(:hover, :focus-within)::-webkit-scrollbar-thumb {
+  background-color: hsla(250, 6%, 20%, 1);
 }

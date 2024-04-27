@@ -35,7 +35,7 @@ const PopMovie = ({
 
   return (
     <div
-      className={`embla__slide flex-1 justify-center flex-col gap-5 overflow-hidden flex rounded-lg p-10 pl-20`}
+      className={`embla__slide flex flex-col justify-center gap-5 overflow-hidden rounded-lg p-10 pl-20`}
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: "cover",
@@ -43,7 +43,9 @@ const PopMovie = ({
         backgroundRepeat: "no-repeat",
       }}
     >
-      <h1 className="max-w-md text-6xl text-white font-bold leading-none">{title}</h1>
+      <h1 className="max-w-md text-6xl font-bold leading-none text-white">
+        {title}
+      </h1>
       <div className="flex gap-2 text-white">
         <span>{release_date}</span>
         <span className="rounded bg-banner-background px-1">

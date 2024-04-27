@@ -29,35 +29,37 @@ export interface Movie {
 
 const MovieWrapper = () => {
   const [movie, setMovie] = useState<Movie[]>();
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
+    Autoplay({ delay: 3000 }),
+  ]);
   useEffect(() => {
     if (emblaApi) {
       console.log(emblaApi.slideNodes()); // Access API
     }
   }, [emblaApi]);
-  // useEffect(() => {
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       accept: "application/json",
-  //       Authorization:
-  //         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjExYjljZGRlMzQzZjMwZGZmNDdlMDdmNTI0MmQ1MSIsInN1YiI6IjY0N2Y0NWJlMGUyOWEyMmJkZWJkYjM1MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.thwqloDibcqsU7JleISSddPWZj7MBmHgA9ifczThNwQ",
-  //     },
-  //   };
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjExYjljZGRlMzQzZjMwZGZmNDdlMDdmNTI0MmQ1MSIsInN1YiI6IjY0N2Y0NWJlMGUyOWEyMmJkZWJkYjM1MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.thwqloDibcqsU7JleISSddPWZj7MBmHgA9ifczThNwQ",
+      },
+    };
 
-  //   fetch(
-  //     "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
-  //     options,
-  //   )
-  //     .then((response) => response.json())
-  //     .then((response: MovieApiResponse) => setMovie(response.results))
-  //     .catch((err) => console.error(err));
-  // }, []);
-  // console.log(movie);
+    fetch(
+      "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
+      options,
+    )
+      .then((response) => response.json())
+      .then((response: MovieApiResponse) => setMovie(response.results))
+      .catch((err) => console.error(err));
+  }, []);
+  console.log(movie);
   return (
-    <section className="relative z-0 mx-auto h-[90vh] w-full">
-      <div className="embla h-full w-full" ref={emblaRef}>
-        <div className="embla__container relative flex h-full w-full gap-4 rounded-lg bg-banner-background p-4">
+    <section className="relative z-0 mx-auto h-full overflow-y-auto w-full max-w-[100vw] rounded-lg bg-banner-background p-4">
+      <div className="embla h-[78vh] w-full" ref={emblaRef}>
+        <div className="embla__container relative flex h-full w-full gap-7">
           {movie?.map((mov) => (
             <PopMovie
               key={mov.id}

@@ -4,7 +4,7 @@ import React from "react";
 const MenuIcon = () => {
   const { isOpen } = useNavContext();
   return (
-    <>
+    <div className="flex hover:cursor-pointer gap-1 flex-col">
       <span
         className={`h-[2px] w-6 rounded-sm bg-white transition-all duration-500 ${
           isOpen ? "translate-x-1 translate-y-1 rotate-45" : ""
@@ -20,7 +20,7 @@ const MenuIcon = () => {
           isOpen ? "-translate-y-1 translate-x-1 -rotate-45" : ""
         }`}
       ></span>
-    </>
+    </div>
   );
 };
 

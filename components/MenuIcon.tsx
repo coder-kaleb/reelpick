@@ -2,9 +2,9 @@ import { useNavContext } from "@/context";
 import React from "react";
 
 const MenuIcon = () => {
-  const { isOpen } = useNavContext();
+  const { isOpen, setNavState } = useNavContext();
   return (
-    <div className="flex hover:cursor-pointer gap-1 flex-col">
+    <div className="flex hover:cursor-pointer gap-1 flex-col" onClick={() => setNavState(preVal => ({...preVal, isOpen: !preVal.isOpen}))}>
       <span
         className={`h-[2px] w-6 rounded-sm bg-white transition-all duration-500 ${
           isOpen ? "translate-x-1 translate-y-1 rotate-45" : ""

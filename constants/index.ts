@@ -76,3 +76,15 @@ export const genres = [
     name: "Western",
   },
 ];
+
+
+export interface navProps {
+  isOpen: boolean;
+  extendWidth: boolean;
+  setNavState: React.Dispatch<
+    React.SetStateAction<{
+      isOpen: boolean;
+      extendWidth: boolean;
+    }>
+  >;
+}

@@ -15,13 +15,10 @@ const HomeMovi = () => {
     setNavState,
   };
   return (
-      <NavContext.Provider value={contextVale}>
-        <Nav />
-        {/* <div className="relative flex h-screen w-full items-start">
-          <Sidebar />
-          <MovieWrapper />
-        </div> */}
-      </NavContext.Provider>
+    <NavContext.Provider value={contextVale}>
+      <Nav />
+      <Sidebar />
+    </NavContext.Provider>
   );
 };
 

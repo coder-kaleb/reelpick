@@ -1,16 +1,7 @@
 import { createContext, useContext } from "react";
+import { navProps } from "./constants";
 
 
-export interface navProps {
-  isOpen: boolean;
-  extendWidth: boolean;
-  setNavState: React.Dispatch<
-    React.SetStateAction<{
-      isOpen: boolean;
-      extendWidth: boolean;
-    }>
-  >;
-}
 export const NavContext = createContext<navProps | undefined>(undefined);
 export const useNavContext = () => {
   const navState = useContext(NavContext);

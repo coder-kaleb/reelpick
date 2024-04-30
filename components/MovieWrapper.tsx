@@ -38,25 +38,25 @@ const MovieWrapper = () => {
     <section className="relative w-full bg-surface-l p-4">
       <div className="embla w-full" ref={emblaRef}>
         <div className="embla__container w-full">
-          {/* {movie?.map((mov) => ( */}
-          <PopMovie
-          // key={mov.id}
-          // adult={mov.adult}
-          // backdrop_path={mov.backdrop_path}
-          // genre_ids={mov.genre_ids}
-          // id={mov.id}
-          // original_language={mov.original_language}
-          // original_title={mov.original_title}
-          // overview={mov.overview}
-          // popularity={mov.popularity}
-          // poster_path={mov.poster_path}
-          // release_date={mov.release_date}
-          // title={mov.title}
-          // video={mov.video}
-          // vote_average={mov.vote_average}
-          // vote_count={mov.vote_count}
-          />
-          {/* ))} */}
+          {movie?.map((mov) => (
+            <PopMovie
+              key={mov.id}
+              adult={mov.adult}
+              backdrop_path={mov.backdrop_path}
+              genre_ids={mov.genre_ids}
+              id={mov.id}
+              original_language={mov.original_language}
+              original_title={mov.original_title}
+              overview={mov.overview}
+              popularity={mov.popularity}
+              poster_path={mov.poster_path}
+              release_date={mov.release_date}
+              title={mov.title}
+              video={mov.video}
+              vote_average={mov.vote_average}
+              vote_count={mov.vote_count}
+            />
+          ))}
         </div>
       </div>
     </section>

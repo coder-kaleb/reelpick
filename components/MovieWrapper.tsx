@@ -3,29 +3,7 @@ import React, { useEffect, useState } from "react";
 import PopMovie from "./PopMovie";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-interface MovieApiResponse {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
-}
-
-export interface Movie {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
+import { Movie, MovieApiResponse } from "@/constants";
 
 const MovieWrapper = () => {
   const [movie, setMovie] = useState<Movie[]>();
@@ -57,28 +35,28 @@ const MovieWrapper = () => {
   }, []);
   console.log(movie);
   return (
-    <section className="relative z-0 mx-auto h-full overflow-y-auto w-full max-w-[100vw] rounded-lg bg-banner-background p-4">
-      <div className="embla h-[78vh] w-full" ref={emblaRef}>
-        <div className="embla__container relative flex h-full w-full gap-7">
-          {movie?.map((mov) => (
-            <PopMovie
-              key={mov.id}
-              adult={mov.adult}
-              backdrop_path={mov.backdrop_path}
-              genre_ids={mov.genre_ids}
-              id={mov.id}
-              original_language={mov.original_language}
-              original_title={mov.original_title}
-              overview={mov.overview}
-              popularity={mov.popularity}
-              poster_path={mov.poster_path}
-              release_date={mov.release_date}
-              title={mov.title}
-              video={mov.video}
-              vote_average={mov.vote_average}
-              vote_count={mov.vote_count}
-            />
-          ))}
+    <section className="relative w-full bg-surface-l p-4">
+      <div className="embla w-full" ref={emblaRef}>
+        <div className="embla__container w-full">
+          {/* {movie?.map((mov) => ( */}
+          <PopMovie
+          // key={mov.id}
+          // adult={mov.adult}
+          // backdrop_path={mov.backdrop_path}
+          // genre_ids={mov.genre_ids}
+          // id={mov.id}
+          // original_language={mov.original_language}
+          // original_title={mov.original_title}
+          // overview={mov.overview}
+          // popularity={mov.popularity}
+          // poster_path={mov.poster_path}
+          // release_date={mov.release_date}
+          // title={mov.title}
+          // video={mov.video}
+          // vote_average={mov.vote_average}
+          // vote_count={mov.vote_count}
+          />
+          {/* ))} */}
         </div>
       </div>
     </section>

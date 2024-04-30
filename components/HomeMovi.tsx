@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import { NavContext } from "@/context";
 import Sidebar from "./Sidebar";
 import MovieWrapper from "./MovieWrapper";
+import PopMovie from "./PopMovie";
 
 const HomeMovi = () => {
   const [navState, setNavState] = useState({
@@ -18,6 +19,7 @@ const HomeMovi = () => {
     <NavContext.Provider value={contextVale}>
       <Nav />
       <Sidebar />
+      <MovieWrapper />
     </NavContext.Provider>
   );
 };

@@ -28,6 +28,19 @@ const config: Config = {
       backgroundImage: {
         overlay:
           "linear-gradient(90deg, hsl(220, 17%, 7%) 0%, hsla(220, 17%, 7%, 0.3) 100%)",
+        loading:
+          "linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.055) 20%, hsla(0, 0%, 100%, 0.089) 60%, hsla(0, 0%, 100%, 0))",
+
+        "bottom-overlay":
+          "linear-gradient(180deg, hsla(250, 13%, 11%, 0), hsla(250, 13%, 11%, 1))",
+      },
+      keyframes: {
+        shimmer: {
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        shimmer: "shimmer 2s infinite",
       },
     },
   },

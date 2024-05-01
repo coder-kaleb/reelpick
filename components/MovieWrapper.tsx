@@ -12,7 +12,7 @@ const MovieWrapper = () => {
   ]);
   useEffect(() => {
     if (emblaApi) {
-      console.log(emblaApi.slideNodes()); // Access API
+      console.log(emblaApi.slideNodes());
     }
   }, [emblaApi]);
   useEffect(() => {
@@ -33,7 +33,6 @@ const MovieWrapper = () => {
       .then((response: MovieApiResponse) => setMovie(response.results))
       .catch((err) => console.error(err));
   }, []);
-  console.log(movie);
   return (
     <section className="relative w-full bg-surface-l p-4">
       <div className="embla w-full" ref={emblaRef}>

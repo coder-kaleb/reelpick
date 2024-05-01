@@ -23,8 +23,12 @@ const config: Config = {
         "rating-color": "hsla(44, 100%, 49%, 1)",
       },
       boxShadow: {
-        'around': '0 0 0 2px hsla(250, 1%, 44%, 1)'
-      }
+        around: "0 0 0 2px hsla(250, 1%, 44%, 1)",
+      },
+      backgroundImage: {
+        overlay:
+          "linear-gradient(90deg, hsl(220, 17%, 7%) 0%, hsla(220, 17%, 7%, 0.3) 100%)",
+      },
     },
   },
   plugins: [],

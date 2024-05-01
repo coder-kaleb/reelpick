@@ -36,7 +36,7 @@ const PopMovie = ({
 
   return (
     <div
-      className={`embla__slide  flex h-[700px] flex-col justify-center gap-5 overflow-hidden rounded-lg p-10 pl-20 before:absolute before:w-full`}
+      className={`embla__slide relative isolate flex h-[700px] flex-col justify-center gap-5 overflow-hidden rounded-lg p-10 pl-20`}
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: "cover",
@@ -53,10 +53,11 @@ const PopMovie = ({
           {parseFloat(vote_average.toString()).toFixed(1)}
         </span>
       </div>
-      <p className="text-white">{genre().join(" ,")}</p>
+      <p className="text-white">{genre().join(", ")}</p>
       <p className="word-space line-clamp-2 max-w-xl tracking-wide text-gray-300">
         {overview}
       </p>
+      <div className="bg-overlay absolute -z-10 inset-0 w-full"></div>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const PopMovie = ({
 
   return (
     <div
-      className={`embla__slide relative isolate flex h-[700px] flex-col gap-3 overflow-hidden rounded-lg pl-16 pt-32`}
+      className={`embla__slide justify-end relative isolate flex h-[700px] flex-col gap-4 pb-16 overflow-hidden border-none rounded-lg pl-5 pt-36 sm:pl-16`}
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: "cover",
@@ -45,33 +45,37 @@ const PopMovie = ({
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="absolute top-5 left-5">
+      <div className="absolute left-5 top-5">
         <h1 className="relative isolate inline-block px-1 text-2xl font-semibold text-white before:absolute before:-inset-1 before:-z-10 before:-skew-y-3 before:bg-red-500">
           Trending
         </h1>
       </div>
-      <h1 className="max-w-4xl text-6xl font-bold leading-none text-white">
+      <h1 className="max-w-4xl max-sm:mx-auto max-sm:text-center mb-7 text-4xl font-bold leading-none text-white max-sm:pr-5 sm:text-6xl">
         {title}
       </h1>
-      <div className="flex gap-3 text-white">
+      <div className="flex w-full max-sm:justify-center max-sm:items-center gap-3 text-center text-white">
         <span className="text-md">{releaseYear}</span>
-        <div className="flex gap-1 items-center">
+        <div className="flex items-center gap-1">
           <Star className="size-4" />
-          <span className="flex items-center justify-between rounded bg-banner-background px-1 text-sm font-semibold">
+          <span className="flex items-center justify-between rounded bg-banner-background px-1 font-semibold">
             {parseFloat(vote_average.toString()).toFixed(1)}
           </span>
         </div>
       </div>
-      <p className="font-light tracking-wide text-white">
+      <p className="font-light max-sm:text-center tracking-wide text-white">
         {genre().join(", ")}
       </p>
-      <p className="word-space text-md line-clamp-4 max-w-xl tracking-wide text-gray-300">
+      <p className="word-space max-sm:mx-auto text-md line-clamp-4 max-w-xl tracking-wide text-gray-300 max-sm:text-gray-400">
         {overview}
       </p>
-      <div className="mt-10">
+      <div className="mt-10 flex gap-7">
         <button className="flex items-center justify-center gap-1 rounded-md bg-red-600 px-4 py-3 font-semibold text-white shadow-none transition hover:shadow-md">
           <Play strokeWidth={4} className="size-4" />
           Watch Now
+        </button>
+        <button className="flex items-center justify-center gap-1 rounded-md border-gray-200 border px-4 py-3 font-semibold text-white shadow-none transition hover:shadow-md">
+          <Play strokeWidth={4} className="size-4" />
+          Watch Trailer
         </button>
       </div>
       <div className="absolute inset-0 -z-10 w-full bg-overlay"></div>

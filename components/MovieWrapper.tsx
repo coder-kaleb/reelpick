@@ -10,7 +10,7 @@ const MovieWrapper = () => {
   const [movie, setMovie] = useState<Movie[]>();
   const [loading, setLoading] = useState(true);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
-    Autoplay({ delay: 3000, stopOnMouseEnter: true }),
+    Autoplay({ delay: 4000, stopOnMouseEnter: true }),
   ]);
   useEffect(() => {
     if (emblaApi) {
@@ -41,6 +41,7 @@ const MovieWrapper = () => {
         setLoading(false);
       });
   }, []);
+  console.log(movie)
   return (
     <article className="relative w-full bg-surface-l p-4">
       <div className="bg-bottom-overlay pointer-events-none fixed bottom-0 left-0 z-10 h-36 w-full"></div>

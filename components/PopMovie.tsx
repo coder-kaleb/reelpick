@@ -38,7 +38,7 @@ const PopMovie = ({
   const vote = parseFloat(vote_average.toString()).toFixed(1);
   return (
     <div
-      className={`embla__slide relative isolate flex h-[75vh] flex-col justify-end gap-2 overflow-hidden rounded-lg border-none pb-9 pl-5 pt-36 sm:pl-16`}
+      className={`embla__slide relative isolate flex h-[75vh] flex-col justify-end gap-2 overflow-hidden rounded-lg border-none pb-9 pl-5 pt-36 outline-none sm:pl-16`}
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: "cover",

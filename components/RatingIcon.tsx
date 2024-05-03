@@ -3,14 +3,13 @@ import React from "react";
 
 const RatingIcon = ({ rate, bg }: { rate: string; bg: boolean }) => {
   return (
-    <div className="flex items-center gap-1">
-      <Star className="size-4" />
+    <div className="flex items-center gap-[2px]">
+      <Star className="size-4 text-red-600" strokeWidth={4} />
       <span
-        className={`flex items-center justify-between rounded font-semibold ${bg ? "bg-banner-background" : "bg-transparent"}  px-1 `}
+        className={`flex items-center justify-between rounded font-semibold ${bg ? "bg-banner-background" : "bg-transparent text-white"}  px-1 `}
       >
         {rate}
       </span>
-      <span className="text-md">2022</span>
     </div>
   );
 };

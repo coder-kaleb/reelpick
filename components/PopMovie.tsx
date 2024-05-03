@@ -37,7 +37,7 @@ const PopMovie = ({
 
   return (
     <div
-      className={`embla__slide justify-end relative isolate flex h-[700px] flex-col gap-4 pb-16 overflow-hidden border-none rounded-lg pl-5 pt-36 sm:pl-16`}
+      className={`embla__slide relative isolate flex h-[73vh] flex-col justify-end pb-9 gap-2 overflow-hidden rounded-lg border-none pl-5 pt-36 sm:pl-16`}
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: "cover",
@@ -50,10 +50,10 @@ const PopMovie = ({
           Trending
         </h1>
       </div>
-      <h1 className="max-w-4xl max-sm:mx-auto max-sm:text-center mb-7 text-4xl font-bold leading-none text-white max-sm:pr-5 sm:text-6xl">
+      <h1 className="max-w-5xl text-4xl font-bold leading-none text-white max-sm:mx-auto max-sm:pr-5 max-sm:text-center sm:text-6xl">
         {title}
       </h1>
-      <div className="flex w-full max-sm:justify-center max-sm:items-center gap-3 text-center text-white">
+      <div className="flex w-full gap-3 text-center text-white max-sm:items-center max-sm:justify-center">
         <span className="text-md">{releaseYear}</span>
         <div className="flex items-center gap-1">
           <Star className="size-4" />
@@ -62,18 +62,15 @@ const PopMovie = ({
           </span>
         </div>
       </div>
-      <p className="font-light max-sm:text-center tracking-wide text-white">
+      <p className="font-light tracking-wide text-white max-sm:text-center">
         {genre().join(", ")}
       </p>
-      <p className="word-space max-sm:mx-auto text-md line-clamp-4 max-w-xl tracking-wide text-gray-300 max-sm:text-gray-400">
-        {overview}
-      </p>
-      <div className="mt-10 flex gap-7">
+      <div className="mt-5 flex gap-7 max-sm:items-center max-sm:justify-center">
         <button className="flex items-center justify-center gap-1 rounded-md bg-red-600 px-4 py-3 font-semibold text-white shadow-none transition hover:shadow-md">
           <Play strokeWidth={4} className="size-4" />
           Watch Now
         </button>
-        <button className="flex items-center justify-center gap-1 rounded-md border-gray-200 border px-4 py-3 font-semibold text-white shadow-none transition hover:shadow-md">
+        <button className="flex items-center justify-center gap-1 rounded-md border border-gray-200 px-4 py-3 font-semibold text-white shadow-none transition hover:shadow-md">
           <Play strokeWidth={4} className="size-4" />
           Watch Trailer
         </button>

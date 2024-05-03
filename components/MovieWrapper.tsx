@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Movie, MovieApiResponse } from "@/constants";
 import LoadingSkeleton from "./LoadingSkeleton";
+import WeaklyTrendingMovie from "./WeaklyTrendingMovie";
 
 const MovieWrapper = () => {
   const [movie, setMovie] = useState<Movie[]>();
@@ -41,10 +42,10 @@ const MovieWrapper = () => {
         setLoading(false);
       });
   }, []);
-  console.log(movie)
+  console.log(movie);
   return (
-    <article className="relative w-full h-[90vh] bg-surface-l p-4">
-      <div className="bg-bottom-overlay pointer-events-none fixed bottom-0 left-0 z-10 h-36 w-full"></div>
+    <article className="relative h-[90vh] w-full overflow-y-auto bg-surface-l p-2 sm:p-4">
+      <div className="pointer-events-none fixed bottom-0 left-0 z-10 h-36 w-full bg-bottom-overlay"></div>
       <div className="embla w-full" ref={emblaRef}>
         <div className="embla__container w-full">
           {loading ? (
@@ -72,6 +73,9 @@ const MovieWrapper = () => {
           )}
         </div>
       </div>
+
+      {/* THE POPULAR MOVIES --------------- */}
+      <WeaklyTrendingMovie />
     </article>
   );
 };

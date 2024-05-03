@@ -1,7 +1,8 @@
 import React from "react";
 import { Movie } from "@/constants";
 import { genres } from "@/constants";
-import { Play, Star, TrendingUp } from "lucide-react";
+import { Play, Star } from "lucide-react";
+import RatingIcon from "./RatingIcon";
 
 const PopMovie = ({
   adult,
@@ -34,10 +35,10 @@ const PopMovie = ({
 
   const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
   const releaseYear = new Date(release_date).getFullYear();
-
+  const vote = parseFloat(vote_average.toString()).toFixed(1);
   return (
     <div
-      className={`embla__slide relative isolate flex h-[73vh] flex-col justify-end pb-9 gap-2 overflow-hidden rounded-lg border-none pl-5 pt-36 sm:pl-16`}
+      className={`embla__slide relative isolate flex h-[75vh] flex-col justify-end gap-2 overflow-hidden rounded-lg border-none pb-9 pl-5 pt-36 sm:pl-16`}
       style={{
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: "cover",
@@ -50,17 +51,12 @@ const PopMovie = ({
           Trending
         </h1>
       </div>
-      <h1 className="max-w-5xl text-4xl font-bold leading-none text-white max-sm:mx-auto max-sm:pr-5 max-sm:text-center sm:text-6xl">
+      <h1 className="mb-1 max-w-5xl text-4xl font-bold leading-none text-white max-sm:mx-auto max-sm:pr-5 max-sm:text-center sm:text-6xl">
         {title}
       </h1>
       <div className="flex w-full gap-3 text-center text-white max-sm:items-center max-sm:justify-center">
         <span className="text-md">{releaseYear}</span>
-        <div className="flex items-center gap-1">
-          <Star className="size-4" />
-          <span className="flex items-center justify-between rounded bg-banner-background px-1 font-semibold">
-            {parseFloat(vote_average.toString()).toFixed(1)}
-          </span>
-        </div>
+        <RatingIcon rate={vote} bg={false} />
       </div>
       <p className="font-light tracking-wide text-white max-sm:text-center">
         {genre().join(", ")}

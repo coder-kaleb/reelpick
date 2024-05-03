@@ -9,11 +9,16 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
 
 ::-webkit-scrollbar-thumb {
   background-color: hsla(250, 6%, 20%, 1);

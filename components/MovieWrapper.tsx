@@ -23,8 +23,7 @@ const MovieWrapper = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjExYjljZGRlMzQzZjMwZGZmNDdlMDdmNTI0MmQ1MSIsInN1YiI6IjY0N2Y0NWJlMGUyOWEyMmJkZWJkYjM1MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.thwqloDibcqsU7JleISSddPWZj7MBmHgA9ifczThNwQ",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
       },
     };
 
@@ -41,6 +40,9 @@ const MovieWrapper = () => {
         alert(err);
         setLoading(false);
       });
+
+
+      // fetch 
   }, []);
   console.log(movie);
   return (

@@ -7,7 +7,7 @@ const Sidebar = () => {
   console.log(isOpen);
   return (
     <nav
-      className={` sidebar__scroll absolute -left-80 bottom-0 top-20 z-10 w-full max-w-80 ${isOpen ? " translate-x-80" : ""} overflow-y-auto border-t  border-t-slate-600 bg-background-1 py-6 transition duration-500`}
+      className={` sidebar__scroll absolute -left-80 bottom-0 top-[87px] z-10 w-full max-w-80 ${isOpen ? " translate-x-80" : ""} overflow-y-auto border-t  border-t-slate-600 bg-background-1 py-6 transition duration-500`}
     >
       <aside className={`px-4`}>
         <h4 className="mb-1 text-lg font-medium text-white">Genres</h4>

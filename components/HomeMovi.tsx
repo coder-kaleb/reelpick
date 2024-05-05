@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import { NavContext } from "@/context";
 import Sidebar from "./Sidebar";
 import MovieWrapper from "./MovieWrapper";
-import PopMovie from "./PopMovie";
+import PopMovie from "./TrendingMovie";
 
 const HomeMovi = () => {
   const [navState, setNavState] = useState({

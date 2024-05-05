@@ -33,7 +33,7 @@ const Nav = () => {
               }))
             }
           >
-            <Minimize className="text-white opacity-60 transition group-hover/icon:opacity-100" />
+            <Minimize className=" text-white opacity-60 transition group-hover/icon:opacity-100" />
           </div>
         </div>
       ) : (
@@ -51,17 +51,19 @@ const Nav = () => {
         <Search className="absolute left-2 top-1/2 size-5 -translate-y-1/2 text-white transition hover:cursor-pointer group-focus-within:opacity-0" />
         <MenuIcon />
       </div>
-
-      <div
-        className="group block rounded-md bg-banner-background p-3 opacity-50 hover:cursor-pointer md:hidden"
-        onClick={() =>
-          setNavState((preVal) => ({
-            ...preVal,
-            extendWidth: !preVal.extendWidth,
-          }))
-        }
-      >
-        <Search className="text-white opacity-60 transition group-hover:opacity-100" />
+      <div className="flex items-center gap-3 md:hidden">
+        <div
+          className="group rounded-md bg-banner-background p-3 opacity-50 hover:cursor-pointer "
+          onClick={() =>
+            setNavState((preVal) => ({
+              ...preVal,
+              extendWidth: !preVal.extendWidth,
+            }))
+          }
+        >
+          <Search className="text-white opacity-60 transition group-hover:opacity-100" />
+        </div>
+        <MenuIcon />
       </div>
     </header>
   );

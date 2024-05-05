@@ -4,7 +4,7 @@ import { genres } from "@/constants";
 import { Play, Star } from "lucide-react";
 import RatingIcon from "./RatingIcon";
 
-const PopMovie = ({
+const TrendingMovie = ({
   adult,
   backdrop_path,
   genre_ids,
@@ -76,4 +76,4 @@ const PopMovie = ({
   );
 };
 
-export default PopMovie;
+export default TrendingMovie;

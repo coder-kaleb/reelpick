@@ -77,7 +77,6 @@ export const genres = [
   },
 ];
 
-
 export interface navProps {
   isOpen: boolean;
   extendWidth: boolean;
@@ -87,13 +86,6 @@ export interface navProps {
       extendWidth: boolean;
     }>
   >;
-}
-
-export interface MovieApiResponse {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
 }
 
 export interface Movie {
@@ -111,4 +103,16 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+export type MoviePreview = Pick<
+  Movie,
+  "release_date" | "vote_average" | "title" | "poster_path" | "id" | "genre_ids"
+>;
+
+export interface MovieApiResponse {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
 }

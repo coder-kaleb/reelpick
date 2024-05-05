@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import PopMovie from "./TrendingMovie";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { Movie, MovieApiResponse } from "@/constants";
+import { Movie, MovieApiResponse, baseApiUrl } from "@/constants";
 import LoadingSkeleton from "./LoadingSkeleton";
 import MovieInfo from "./MovieInfo";
 import TrendingMovie from "./TrendingMovie";
+import { fetchData } from "@/utility";
 
 interface Props {
-  trendingMovie: Movie[];
-  popularMovie: Movie[];
-  popularTvSeries: Movie[];
+  trendingMovie: Movie[] | undefined;
+  popularMovie: Movie[] | undefined;
+  popularTvSeries: Movie[] | undefined;
 }
 
 const MovieWrapper = () => {
@@ -31,6 +31,7 @@ const MovieWrapper = () => {
       console.log(emblaApi.slideNodes());
     }
   }, [emblaApi]);
+
   useEffect(() => {
     const options = {
       method: "GET",
@@ -40,39 +41,33 @@ const MovieWrapper = () => {
       },
     };
 
-    fetch(
-      "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
-      options,
-    )
-      .then((response) => response.json())
-      .then((response: MovieApiResponse) => {
-        setMovieInfo((preVal) => ({
-          ...preVal,
-          trendingMovie: response.results,
-        }));
-      })
-      .catch((err) => {
-        alert(err);
-        setLoading(false);
-      });
+    const fetchDataAndUpdateState = async () => {
+      try {
+        setLoading(true);
+        const [trendingMovei, popularMovie] = await Promise.all([
+          fetchData(
+            `${baseApiUrl}/3/trending/movie/day?language=en-US`,
+            options,
+          ),
 
-    // fetch popular movie
-    setLoading(true);
-    fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-      options,
-    )
-      .then((response) => response.json())
-      .then((response: MovieApiResponse) => {
+          // fetch popular movie
+          fetchData(
+            `${baseApiUrl}/3/movie/popular?language=en-US&page=1`,
+            options,
+          ),
+        ]);
         setMovieInfo((preVal) => ({
           ...preVal,
-          popularMovie: response.results,
+          trendingMovie: trendingMovei?.results,
+          popularMovie: popularMovie?.results,
         }));
         setLoading(false);
-      })
-      .catch((err) => {
+      } catch (error) {
+        alert(error);
         setLoading(false);
-      });
+      }
+    };
+    fetchDataAndUpdateState();
   }, []);
   console.log(movieInfo);
   return (
@@ -81,7 +76,7 @@ const MovieWrapper = () => {
 
       {/* TRENDING MOVIES ---------------------- */}
       <div className="embla mb-4 w-full" ref={emblaRef}>
-        <div className="embla__container w-full">
+        <div className="embla__container  w-full">
           {loading ? (
             <LoadingSkeleton />
           ) : (

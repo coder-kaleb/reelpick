@@ -1,3 +1,6 @@
+// CONSTANT VARIABLES
+export const baseApiUrl = "https://api.themoviedb.org";
+
 export const genres = [
   {
     id: 28,
@@ -115,4 +118,12 @@ export interface MovieApiResponse {
   results: Movie[];
   total_pages: number;
   total_results: number;
+}
+
+export interface optionProps {
+  method: string;
+  headers: {
+    accept: string;
+    Authorization: string;
+  };
 }

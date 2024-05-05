@@ -15,11 +15,11 @@ const MovieInfo = ({
   const releaseYear = new Date(release_date).getFullYear();
   const vote = parseFloat(vote_average.toString()).toFixed(1);
   return (
-    <div className="relative h-72 min-w-52 cursor-pointer">
+    <div className="relative min-w-52 cursor-pointer">
       <Image
         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
         alt="puss in boots"
-        className="rounded-xl"
+        className="h-72 rounded-xl"
         width={208}
         height={288}
       />

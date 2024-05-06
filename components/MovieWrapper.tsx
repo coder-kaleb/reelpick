@@ -1,12 +1,9 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import { Movie, MovieApiResponse, baseApiUrl } from "@/constants";
-import LoadingSkeleton from "./LoadingSkeleton";
-import MovieInfo from "./MovieInfo";
+import { Movie, baseApiUrl } from "@/constants";
+
 import TrendingMovie from "./TrendingMovie";
 import { fetchData } from "@/utility";
+import MovieInfo from "./MovieInfo";
+import ButtonSlider from "./ButtonSlider";
 
 interface Props {
   trendingMovie: Movie[] | undefined;
@@ -14,92 +11,39 @@ interface Props {
   popularTvSeries: Movie[] | undefined;
 }
 
-const MovieWrapper = () => {
-  const [movieInfo, setMovieInfo] = useState<Props>({
-    trendingMovie: [],
-    popularMovie: [],
-    popularTvSeries: [],
-  });
-  const [loading, setLoading] = useState(true);
-
-  const [isSlide, setIsSlide] = useState("0");
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
-    Autoplay({ delay: 4000, stopOnMouseEnter: true }),
+const MovieWrapper = async () => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
+    },
+  };
+  const [trendingMovie, popularMovie] = await Promise.all([
+    fetchData(`${baseApiUrl}/3/trending/movie/day?language=en-US`, options),
+    fetchData(`${baseApiUrl}/3/movie/popular?language=en-US&page=1`, options),
   ]);
-  useEffect(() => {
-    if (emblaApi) {
-      console.log(emblaApi.slideNodes());
-    }
-  }, [emblaApi]);
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
-      },
-    };
-
-    const fetchDataAndUpdateState = async () => {
-      try {
-        setLoading(true);
-        const [trendingMovei, popularMovie] = await Promise.all([
-          fetchData(
-            `${baseApiUrl}/3/trending/movie/day?language=en-US`,
-            options,
-          ),
-
-          // fetch popular movie
-          fetchData(
-            `${baseApiUrl}/3/movie/popular?language=en-US&page=1`,
-            options,
-          ),
-        ]);
-        setMovieInfo((preVal) => ({
-          ...preVal,
-          trendingMovie: trendingMovei?.results,
-          popularMovie: popularMovie?.results,
-        }));
-        setLoading(false);
-      } catch (error) {
-        alert(error);
-        setLoading(false);
-      }
-    };
-    fetchDataAndUpdateState();
-  }, []);
-  console.log(movieInfo);
   return (
     <article className="relative h-[calc(100vh-88px)] w-full overflow-y-auto bg-surface-l p-3 sm:p-4">
       <div className="pointer-events-none fixed bottom-0 left-0 z-10 h-36 w-full bg-bottom-overlay"></div>
 
       {/* TRENDING MOVIES ---------------------- */}
-      <div className="embla mb-4 w-full" ref={emblaRef}>
-        <div className="embla__container  w-full">
-          {loading ? (
-            <LoadingSkeleton />
-          ) : (
-            movieInfo.trendingMovie?.map((mov) => (
-              <TrendingMovie
-                key={mov.id}
-                adult={mov.adult}
-                backdrop_path={mov.backdrop_path}
-                genre_ids={mov.genre_ids}
-                id={mov.id}
-                original_language={mov.original_language}
-                original_title={mov.original_title}
-                overview={mov.overview}
-                popularity={mov.popularity}
-                poster_path={mov.poster_path}
-                release_date={mov.release_date}
-                title={mov.title}
-                video={mov.video}
-                vote_average={mov.vote_average}
-                vote_count={mov.vote_count}
-              />
-            ))
-          )}
+      <div className="embla mb-4 w-full">
+        <div className="embla__container w-full">
+          {trendingMovie?.results?.map((mov) => (
+            <TrendingMovie
+              key={mov.id}
+              backdrop_path={mov.backdrop_path}
+              genre_ids={mov.genre_ids}
+              id={mov.id}
+              overview={mov.overview}
+              poster_path={mov.poster_path}
+              release_date={mov.release_date}
+              title={mov.title}
+              vote_average={mov.vote_average}
+            />
+          ))}
         </div>
       </div>
 
@@ -107,23 +51,19 @@ const MovieWrapper = () => {
       <h2 className="mb-3 text-xl font-semibold  text-white sm:text-2xl">
         Weekly Trending Movies
       </h2>
-      <section className="mb-12 w-full overflow-x-auto pb-14">
-        <div className=" flex gap-3 pb-3">
-          {loading ? (
-            <LoadingSkeleton />
-          ) : (
-            movieInfo.trendingMovie?.map((mov) => (
-              <MovieInfo
-                key={mov.id}
-                genre_ids={mov.genre_ids}
-                id={mov.id}
-                poster_path={mov.poster_path}
-                release_date={mov.release_date}
-                title={mov.title}
-                vote_average={mov.vote_average}
-              />
-            ))
-          )}
+      <section className="horizontal__scroll mb-12 w-full overflow-x-auto pb-4">
+        <div className=" flex gap-3">
+          {trendingMovie?.results?.map((mov) => (
+            <MovieInfo
+              key={mov.id}
+              genre_ids={mov.genre_ids}
+              id={mov.id}
+              poster_path={mov.poster_path}
+              release_date={mov.release_date}
+              title={mov.title}
+              vote_average={mov.vote_average}
+            />
+          ))}
         </div>
       </section>
 
@@ -132,43 +72,22 @@ const MovieWrapper = () => {
           Popular
         </h2>
 
-        <div className="relative isolate font-medium text-white">
-          <button
-            className="rounded-full px-4 py-2"
-            onClick={() => setIsSlide("0")}
-          >
-            Movie
-          </button>
-          <button
-            className="rounded-full px-4 py-2"
-            onClick={() => setIsSlide("1")}
-          >
-            Tv Series
-          </button>
-
-          <div
-            className={`absolute isolate -z-10 bg-red-600 transition-all duration-500  ${isSlide === "0" ? "translate-x-0" : "w-[87px] translate-x-full"}  top-0 h-full w-20 rounded-full`}
-          ></div>
-        </div>
+        <ButtonSlider />
       </div>
 
-      <section className="w-full overflow-x-auto pb-14">
-        <div className="flex gap-3 pb-3">
-          {loading ? (
-            <LoadingSkeleton />
-          ) : (
-            movieInfo.popularMovie?.map((mov) => (
-              <MovieInfo
-                key={mov.id}
-                genre_ids={mov.genre_ids}
-                id={mov.id}
-                poster_path={mov.poster_path}
-                release_date={mov.release_date}
-                title={mov.title}
-                vote_average={mov.vote_average}
-              />
-            ))
-          )}
+      <section className="horizontal__scroll w-full overflow-x-auto pb-4">
+        <div className="flex gap-3">
+          {popularMovie?.results?.map((mov) => (
+            <MovieInfo
+              key={mov.id}
+              genre_ids={mov.genre_ids}
+              id={mov.id}
+              poster_path={mov.poster_path}
+              release_date={mov.release_date}
+              title={mov.title}
+              vote_average={mov.vote_average}
+            />
+          ))}
         </div>
       </section>
     </article>

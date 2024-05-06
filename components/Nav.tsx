@@ -1,9 +1,8 @@
 "use client";
-import { DoorClosed, Menu, Minimize, Search, X } from "lucide-react";
+import {Minimize, Search} from "lucide-react";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import MenuIcon from "./MenuIcon";
-import MobNav from "./MobNav";
 import { NavContext, useNavContext } from "@/context";
 import Image from "next/image";
 

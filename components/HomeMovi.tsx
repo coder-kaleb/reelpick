@@ -1,10 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Nav from "./Nav";
 import { NavContext } from "@/context";
 import Sidebar from "./Sidebar";
 import MovieWrapper from "./MovieWrapper";
-import PopMovie from "./TrendingMovie";
 
 const HomeMovi = () => {
   const [navState, setNavState] = useState({
@@ -19,7 +18,9 @@ const HomeMovi = () => {
     <NavContext.Provider value={contextVale}>
       <Nav />
       <Sidebar />
-      <MovieWrapper />
+      <Suspense fallback={<div className="skeleton h-[75vh] w-full"></div>}>
+        <MovieWrapper />
+      </Suspense>
     </NavContext.Provider>
   );
 };

@@ -1,9 +1,9 @@
 "use client";
-import {Minimize, Search} from "lucide-react";
+import { Minimize, Search } from "lucide-react";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import MenuIcon from "./MenuIcon";
-import { NavContext, useNavContext } from "@/context";
+import { useNavContext } from "@/context";
 import Image from "next/image";
 
 const Nav = () => {
@@ -11,7 +11,13 @@ const Nav = () => {
   return (
     <header className="relative flex w-full items-center justify-between overflow-hidden px-4 py-5">
       <Link href="/" className={`text-xl font-semibold text-white`}>
-        <Image src="/images/logo.png" alt="logo" width={120} height={120} />
+        <Image
+          src="/images/logo.png"
+          alt="logo"
+          width={120}
+          height={120}
+          priority
+        />
       </Link>
       {extendWidth ? (
         <div

@@ -1,9 +1,10 @@
+"use client";
 import { genres } from "@/constants";
 import { useNavContext } from "@/context";
-import React from "react";
 
 const Sidebar = () => {
   const { isOpen } = useNavContext();
+
   return (
     <nav
       className={` sidebar__scroll absolute -left-80 bottom-0 top-[87px] z-10 w-full max-w-80 ${isOpen ? " translate-x-80" : ""} overflow-y-auto border-t  border-t-slate-600 bg-background-1 py-6 transition duration-500`}

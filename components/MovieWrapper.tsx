@@ -71,7 +71,6 @@ const MovieWrapper = async () => {
         <h2 className=" mr-auto text-xl font-semibold text-white sm:text-2xl">
           Popular
         </h2>
-
         <ButtonSlider />
       </div>
 

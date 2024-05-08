@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 function ButtonSlider() {
   const [isSlide, setIsSlide] = useState("0");
-  console.log(isSlide);
   return (
     <div className="relative isolate  font-medium text-white">
       <button

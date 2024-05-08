@@ -131,3 +131,11 @@ export interface optionProps {
     Authorization: string;
   };
 }
+
+export const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
+  },
+};

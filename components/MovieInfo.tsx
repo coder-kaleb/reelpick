@@ -14,11 +14,11 @@ const MovieInfo = ({
 }: MoviePreview) => {
   const releaseYear = new Date(release_date).getFullYear();
   const vote = parseFloat(vote_average.toString()).toFixed(1);
-
+  const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
   return (
     <div className="group relative min-w-52 cursor-pointer">
       <Image
-        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+        src={`${poster_path ? imageUrl : "/placeholder.jpg"}`}
         alt="puss in boots"
         className="h-72 rounded-xl transition group-hover:opacity-70"
         width={208}

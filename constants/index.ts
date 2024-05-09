@@ -93,7 +93,7 @@ export interface navProps {
 
 export interface Movie {
   // adult: boolean;
-  backdrop_path: string | null;
+  backdrop_path: string | undefined;
   genre_ids: number[];
   id: number;
   // original_language: string;

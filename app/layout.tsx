@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-theme="dim">
       <body className={`${inter.className} bg-background-1`}>
         <NavContextProvider>
           <Nav />

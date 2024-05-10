@@ -12,7 +12,7 @@ const Nav = () => {
     <header className="relative flex w-full items-center justify-between overflow-hidden px-4 py-5">
       <Link href="/" className={`text-xl font-semibold text-white`}>
         <Image
-          src="/images/logo.png"
+          src="/logo.png"
           alt="logo"
           width={120}
           height={120}

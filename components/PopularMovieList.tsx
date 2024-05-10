@@ -20,11 +20,9 @@ const PopularMovieList = () => {
       setLoading(false);
     });
   }, [isSlide]);
-  console.log(loading);
   const loadingEl = Array.from({ length: 6 }, (_, i) => (
     <div className="skeleton h-72 w-60" key={i}></div>
   ));
-  console.log(loadingEl);
 
   return (
     <>

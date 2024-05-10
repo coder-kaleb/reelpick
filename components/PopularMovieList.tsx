@@ -13,7 +13,7 @@ const PopularMovieList = () => {
   useEffect(() => {
     setLoading(true);
     fetchData(
-      `${baseApiUrl}/3/${isSlide}/popular?language=en-US&page=1`,
+      `${baseApiUrl}/3/${isSlide}/popular?language=en-US&include_adult=false&page=1`,
       options,
     ).then((res) => {
       setPopularMovie(res.results);

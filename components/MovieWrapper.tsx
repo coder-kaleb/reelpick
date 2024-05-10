@@ -11,7 +11,7 @@ interface Props {
 
 const MovieWrapper = async () => {
   
-  const {results:trendingMovie} = await fetchData(`${baseApiUrl}/3/trending/movie/day?language=en-US`, options)
+  const {results:trendingMovie} = await fetchData(`${baseApiUrl}/3/trending/movie/day?language=en-US&include_adult=false`, options)
 ;
 
   return (

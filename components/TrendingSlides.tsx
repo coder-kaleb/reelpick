@@ -3,13 +3,8 @@ import TrendingMovie from "./TrendingMovie";
 import { fetchData } from "@/utility";
 import Carousel from "./Carousel";
 
-interface Props {
-  trendingMovie: Movie[] | undefined;
-  popularMovie: Movie[] | undefined;
-  popularTvSeries: Movie[] | undefined;
-}
 
-const MovieWrapper = async () => {
+const TrendingSlides = async () => {
   
   const {results:trendingMovie} = await fetchData(`${baseApiUrl}/3/trending/movie/day?language=en-US&include_adult=false`, options)
 ;
@@ -28,6 +23,7 @@ const MovieWrapper = async () => {
               release_date={mov.release_date}
               title={mov.title}
               vote_average={mov.vote_average}
+              media_type={mov.media_type}
             />
           ))}
       </Carousel>
@@ -35,4 +31,4 @@ const MovieWrapper = async () => {
   );
 };
 
-export default MovieWrapper;
+export default TrendingSlides;

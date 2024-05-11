@@ -3,6 +3,7 @@ import React from "react";
 import RatingIcon from "./RatingIcon";
 import puss from "@/public/puss.jpg";
 import { MoviePreview, allPro } from "@/constants";
+import Link from "next/link";
 
 const MovieInfo = ({
   release_date,
@@ -11,12 +12,14 @@ const MovieInfo = ({
   poster_path,
   id,
   genre_ids,
+  media_type,
 }: MoviePreview) => {
   const releaseYear = new Date(release_date).getFullYear();
   const vote = parseFloat(vote_average.toString()).toFixed(1);
   const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  console.log(media_type)
   return (
-    <div className="group relative min-w-52 cursor-pointer">
+    <Link href={`${media_type}/${id}`} className="group relative min-w-52 cursor-pointer">
       <Image
         src={`${poster_path ? imageUrl : "/placeholder.jpg"}`}
         alt="puss in boots"
@@ -33,7 +36,7 @@ const MovieInfo = ({
           {releaseYear}
         </span>
       </div>
-    </div>
+    </Link>
   );
 };
 

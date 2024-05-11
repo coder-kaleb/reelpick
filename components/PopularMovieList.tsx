@@ -9,11 +9,10 @@ const PopularMovieList = () => {
   const [popularMovie, setPopularMovie] = useState<Movie[] | null>(null);
   const [isSlide, setIsSlide] = useState<"movie" | "tv">("movie");
   const [loading, setLoading] = useState(true);
-  console.log(isSlide);
   useEffect(() => {
     setLoading(true);
     fetchData(
-      `${baseApiUrl}/3/${isSlide}/popular?language=en-US&include_adult=false&page=1`,
+      `${baseApiUrl}/3/${isSlide}/popular?language=en-US&include_adult=false`,
       options,
     ).then((res) => {
       setPopularMovie(res.results);
@@ -32,6 +31,7 @@ const PopularMovieList = () => {
         </h2>
         <ButtonSlider isSlide={isSlide} setIsSlide={setIsSlide} />
       </div>
+
       <section className="horizontal__scroll w-full overflow-x-auto pb-4">
         <div className="flex gap-3">
           {loading ? (
@@ -46,6 +46,7 @@ const PopularMovieList = () => {
                 release_date={mov.release_date}
                 title={mov.title}
                 vote_average={mov.vote_average}
+                media_type={isSlide}
               />
             ))
           )}

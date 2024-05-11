@@ -96,6 +96,7 @@ export interface Movie {
   backdrop_path: string | undefined;
   genre_ids: number[];
   id: number;
+  media_type: string;
   // original_language: string;
   // original_title: string;
   overview: string;
@@ -110,7 +111,7 @@ export interface Movie {
 
 export type MoviePreview = Pick<
   Movie,
-  "release_date" | "vote_average" | "title" | "poster_path" | "id" | "genre_ids"
+  "release_date" | "vote_average" | "title" | "poster_path" | "id" | "genre_ids" | 'media_type'
 >;
 export type loadingProps = { loading: string };
 

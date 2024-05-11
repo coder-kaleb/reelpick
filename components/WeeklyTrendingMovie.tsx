@@ -19,6 +19,7 @@ const WeeklyTrendingMovie = async () => {
               release_date={mov.release_date}
               title={mov.title}
               vote_average={mov.vote_average}
+              media_type={mov.media_type}
             />
           ))}
         </div>

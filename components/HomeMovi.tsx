@@ -1,6 +1,6 @@
 "use client";
 import React, { Suspense } from "react";
-import MovieWrapper from "./MovieWrapper";
+import MovieWrapper from "./TrendingSlides";
 import WeeklyTrendingMovie from "./WeeklyTrendingMovie";
 import PopularMovieList from "./PopularMovieList";
 

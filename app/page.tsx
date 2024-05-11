@@ -1,13 +1,12 @@
-import MovieWrapper from "@/components/MovieWrapper";
+import MovieWrapper from "@/components/TrendingSlides";
 import PopularMovieList from "@/components/PopularMovieList";
 import WeeklyTrendingMovie from "@/components/WeeklyTrendingMovie";
 import { Suspense } from "react";
 
-
 export default function Home() {
   const loadingElment = (
     <div className="flex gap-3">
-      {new Array(6).map((_, i) => (
+      {Array.from({ length: 6 }).map((_, i) => (
         <div className="skeleton h-72 w-52" key={i}></div>
       ))}
     </div>

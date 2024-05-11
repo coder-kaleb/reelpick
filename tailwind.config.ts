@@ -33,6 +33,8 @@ const config: Config = {
 
         "bottom-overlay":
           "linear-gradient(180deg, hsla(250, 13%, 11%, 0), hsla(250, 13%, 11%, 1))",
+        "video-gradient":
+          "linear-gradient(180deg, rgba(71,77,77,0) 0%, rgba(19,18,18,1) 75%)",
       },
       keyframes: {
         shimmer: {

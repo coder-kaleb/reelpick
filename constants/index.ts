@@ -91,17 +91,21 @@ export interface navProps {
   >;
 }
 
+interface Genere {
+  id: number;
+  name: string;
+}
 export interface Movie {
   // adult: boolean;
   backdrop_path: string | undefined;
-  genre_ids: number[];
+  genre_ids: Genere[];
   id: number;
   media_type: string;
   // original_language: string;
   // original_title: string;
   overview: string;
   // popularity: number;
-  poster_path: string | null;
+  poster_path: string;
   release_date: string;
   title: string;
   // video: boolean;
@@ -117,7 +121,34 @@ export type loadingProps = { loading: string };
 
 export type allPro = MoviePreview & {
   loading: boolean;
+
 };
+
+
+// detail movie
+export type DetailMov = Movie & {
+  budget: string;
+  runtime: number;
+  imdb_id: string;
+  original_language: string;
+  production_countries: [
+    {
+      name: string;
+      iso_3166_1: string;
+    }
+  ]
+}
+
+export type DetailMovProp = Movie & {
+  budget: string;
+  runtime: number;
+  imdb_id: string;
+  original_language: string;
+  production_countries: string;
+}
+
+
+
 export interface MovieApiResponse {
   page: number;
   results: Movie[];

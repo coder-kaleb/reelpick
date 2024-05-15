@@ -17,9 +17,11 @@ const MovieInfo = ({
   const releaseYear = new Date(release_date).getFullYear();
   const vote = parseFloat(vote_average.toString()).toFixed(1);
   const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
-  console.log(media_type)
   return (
-    <Link href={`${media_type}/${id}`} className="group relative min-w-52 cursor-pointer">
+    <Link
+      href={`${media_type}/${id}`}
+      className="group relative min-w-52 cursor-pointer"
+    >
       <Image
         src={`${poster_path ? imageUrl : "/placeholder.jpg"}`}
         alt="puss in boots"

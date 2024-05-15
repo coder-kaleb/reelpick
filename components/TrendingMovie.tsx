@@ -14,16 +14,9 @@ const TrendingMovie = ({
   vote_average,
 }: Movie) => {
   const genre = () => {
-    const gen = genres.map((g) => {
-      if (genre_ids.includes(g.id)) {
-        return g.name;
-      }
-    });
-    return gen.filter((g) => {
-      if (g) {
-        return g;
-      }
-    });
+    return genre_ids.map((g) => {
+      return g.name
+    })
   };
 
   const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
@@ -52,7 +45,7 @@ const TrendingMovie = ({
         <RatingIcon rate={vote} bg={false} />
       </div>
       <p className="font-light tracking-wide text-white max-sm:text-center">
-        {genre().join(", ")}
+        {genre()}
       </p>
       <div className="mt-5 flex gap-7 max-sm:items-center max-sm:justify-center">
         <button className="flex items-center justify-center gap-1 rounded-md bg-red-600 px-4 py-3 font-semibold text-white shadow-none transition hover:shadow-md">

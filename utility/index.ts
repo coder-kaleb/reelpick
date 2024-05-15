@@ -1,4 +1,4 @@
-import { MovieApiResponse, optionProps } from "@/constants";
+import { DetailMov, Movie, MovieApiResponse, optionProps } from "@/constants";
 
 export const fetchData = async (url: string, options: optionProps) => {
   try {
@@ -13,4 +13,15 @@ export const fetchData = async (url: string, options: optionProps) => {
   } catch (error) {
     throw new Error(`${error}`);
   }
+};
+
+export const fetchDetail = async (url: string, options: optionProps) => {
+  const response = await fetch(url, {
+    ...options,
+    cache: "no-store",
+  });
+  if (!response.ok) {
+    throw new Error(`Failed to fetch: ${response.status}`);
+  }
+  return (await response.json()) as DetailMov;
 };
